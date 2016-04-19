@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
 public class ApplicationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,8 +37,8 @@ public class ApplicationActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Form_1 firstForm = new Form_1();
-        fragmentTransaction.add(R.id.fragment_container, firstForm);
+        PlayersListFragment playersListFragment = new PlayersListFragment();
+        fragmentTransaction.add(R.id.fragment_container, playersListFragment);
         fragmentTransaction.commit();
     }
 
@@ -92,7 +93,6 @@ public class ApplicationActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
