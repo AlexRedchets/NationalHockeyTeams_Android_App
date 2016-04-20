@@ -14,6 +14,7 @@ import java.util.List;
 
 public class PlayerAdapter extends BaseAdapter {
 
+
     List<Player> playerList;
     LayoutInflater inflater;
     Context context;
@@ -84,7 +85,7 @@ public class PlayerAdapter extends BaseAdapter {
         ImageView playerImage;
 
         public ViewHolder(View view){
-            playerName = (TextView)view.findViewById(R.id.playerName);
+            playerName = (TextView) view.findViewById(R.id.playerName);
             playerTeam = (TextView)view.findViewById(R.id.playerTeam);
             playerBirthdate = (TextView)view.findViewById(R.id.playerBirthdate);
             playerBirthplace = (TextView)view.findViewById(R.id.playerBirthplace);

@@ -23,8 +23,8 @@ public class PlayersListFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         final PlayerAdapter mPlayerAdapter = new PlayerAdapter(getActivity());
 
@@ -34,22 +34,24 @@ public class PlayersListFragment extends Fragment {
         }
 
         PlayerClient client = Generator.createService(PlayerClient.class);
-        Call<List<Player>> call = client.players("api", "player");
-
-        call.enqueue(new Callback<List<Player>>() {
-            @Override
-            public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
-                if (response.isSuccessful()) {
-                    mPlayerAdapter.updateAdapter(response.body());
-                    System.out.println("SUCCESS");
-                } else {
-                    System.out.println("ERROR");
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Player>> call, Throwable t) {
-                System.out.println(t);
-            }
-        });
+        final Call<List<Player>> call = client.players("api", "player");
+            call.enqueue(new Callback<List<Player>>() {
+                    @Override
+                    public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
+                        if (response.isSuccessful()) {
+                            mPlayerAdapter.updateAdapter(response.body());
+                            System.out.println("SUCCESS");
+                        } else {
+                            System.out.println("ERROR");
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<List<Player>> call, Throwable t) {
+                        System.out.println(t);
+                    }
+                });
     }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);}
 }
