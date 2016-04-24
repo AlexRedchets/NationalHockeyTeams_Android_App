@@ -24,8 +24,8 @@ public class PlayerAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(this.context);
     }
 
-    public void updateAdapter(List<Player> players){
-        playerList = players;
+    public void updateAdapter(List<Player> player){
+        playerList = player;
         notifyDataSetChanged();
     }
 

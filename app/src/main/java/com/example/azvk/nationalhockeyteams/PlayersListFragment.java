@@ -14,8 +14,6 @@ import retrofit2.Response;
 
 public class PlayersListFragment extends Fragment {
 
-    public static final String API_URL = "http://54.187.87.254:8080";
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class PlayersListFragment extends Fragment {
         }
 
         PlayerClient client = Generator.createService(PlayerClient.class);
-        final Call<List<Player>> call = client.players("api", "player");
+        final Call<List<Player>> call = client.player();
             call.enqueue(new Callback<List<Player>>() {
                     @Override
                     public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
@@ -47,7 +45,7 @@ public class PlayersListFragment extends Fragment {
                     }
                     @Override
                     public void onFailure(Call<List<Player>> call, Throwable t) {
-                        System.out.println(t);
+                        System.out.println(t.getMessage());
                     }
                 });
     }
