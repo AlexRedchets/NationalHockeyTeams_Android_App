@@ -44,6 +44,8 @@ public class PlayerAdapter extends BaseAdapter {
         return playerList != null ? playerList.get(position).hashCode() : 0;
     }
 
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -60,13 +62,13 @@ public class PlayerAdapter extends BaseAdapter {
 
         Player currentPlayerData = getItem(position);
         mViewHolder.playerName.setText(currentPlayerData.getName());
-        mViewHolder.playerWeight.setText(String.valueOf(currentPlayerData.getWeight()));
+        /*mViewHolder.playerWeight.setText(String.valueOf(currentPlayerData.getWeight()));
         mViewHolder.playerHeight.setText(String.valueOf(currentPlayerData.getHeight()));
         mViewHolder.playerTeam.setText(currentPlayerData.getTeam());
         mViewHolder.playerBirthplace.setText(currentPlayerData.getBirthplace());
         mViewHolder.playerBirthdate.setText(currentPlayerData.getBirthdate());
         mViewHolder.playerNumber.setText(String.valueOf(currentPlayerData.getNumber()));
-        mViewHolder.playerPosition.setText(currentPlayerData.getPosition());
+        mViewHolder.playerPosition.setText(currentPlayerData.getPosition());*/
         Picasso.with(context).load(currentPlayerData.getImgRes()).into(mViewHolder.playerImage);
 
         return convertView;
@@ -86,13 +88,13 @@ public class PlayerAdapter extends BaseAdapter {
 
         public ViewHolder(View view){
             playerName = (TextView) view.findViewById(R.id.playerName);
-            playerTeam = (TextView)view.findViewById(R.id.playerTeam);
+            /*playerTeam = (TextView)view.findViewById(R.id.playerTeam);
             playerBirthdate = (TextView)view.findViewById(R.id.playerBirthdate);
             playerBirthplace = (TextView)view.findViewById(R.id.playerBirthplace);
             playerHeight = (TextView)view.findViewById(R.id.playerHeight);
             playerPosition = (TextView)view.findViewById(R.id.playerPosition);
             playerNumber = (TextView)view.findViewById(R.id.playerNumber);
-            playerWeight = (TextView)view.findViewById(R.id.playerWeight);
+            playerWeight = (TextView)view.findViewById(R.id.playerWeight);*/
             playerImage = (ImageView)view.findViewById(R.id.playerImage);
         }
     }

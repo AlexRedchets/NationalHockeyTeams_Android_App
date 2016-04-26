@@ -2,8 +2,10 @@ package com.example.azvk.nationalhockeyteams;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -134,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void registerNewUser(String username, String password){
+    private void registerNewUser(final String username, final String password){
 
         User user = new User(username, password);
         LoginService loginService = Generator.createService(LoginService.class);
@@ -144,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.body().username != null) {
                     System.out.println("SUCCESS");
-                    alertDialog("Success", "Account was created successfully");
+                    saveUserAlertDialog("Success", "Account was created successfully. Do you want to save your information to login automatically?", username, password);
                     //Toast.makeText(LoginActivity.this, "Account was created successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     System.out.println("unSUCCESS");
@@ -163,6 +165,25 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void saveUserAlertDialog(String title, String message, final String username, final String password){
+        new AlertDialog.Builder(LoginActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        saveLoginInfo(username, password);
+                    }
+                })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        ifUserExists();
+                    }
+                })
+                .show();
+    }
+
     private void alertDialog(String title, String message){
         new AlertDialog.Builder(LoginActivity.this)
                 .setTitle(title)
@@ -170,10 +191,21 @@ public class LoginActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        ifUserExists();
                     }
                 })
                 .show();
+    }
+
+    private void saveLoginInfo(String username, String password){
+        dialog.cancel();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.apply();
+
+        ifUserExists();
     }
 
     private boolean isEmpty(EditText editText){

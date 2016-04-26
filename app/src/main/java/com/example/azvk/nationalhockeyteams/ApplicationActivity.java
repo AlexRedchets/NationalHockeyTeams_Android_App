@@ -1,7 +1,9 @@
 package com.example.azvk.nationalhockeyteams;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 
@@ -34,8 +36,7 @@ public class ApplicationActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         PlayersListFragment playersListFragment = new PlayersListFragment();
         fragmentTransaction.add(R.id.fragment_container, playersListFragment);
