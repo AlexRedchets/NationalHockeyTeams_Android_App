@@ -23,11 +23,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordText;
     Button loginButton;
     Button signinButton;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        dialog = null;
 
         loginButton = (Button)findViewById(R.id.loginButton);
         signinButton = (Button)findViewById(R.id.signinButton);
@@ -64,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.body().username != null) {
                         System.out.println("SUCCESS");
-
                         ifUserExists();
                     } else {
                         System.out.println("unSUCCESS");
@@ -80,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void ifUserExists(){
+        dialog.dismiss();
         Intent i = new Intent(this, ApplicationActivity.class);
         finish();
         startActivity(i);
@@ -87,8 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signInDialog(){
 
-        final Dialog dialog = new Dialog(this);
-
+        dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         dialog.setContentView(R.layout.registration_form);
@@ -142,31 +144,33 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.body().username != null) {
                     System.out.println("SUCCESS");
-                    Toast.makeText(LoginActivity.this, "Account was created successfully", Toast.LENGTH_SHORT).show();
-                    ifUserExists();
+                    alertDialog("Success", "Account was created successfully");
+                    //Toast.makeText(LoginActivity.this, "Account was created successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     System.out.println("unSUCCESS");
-                    //alertDialog("Error", "This username already exists");
-                    Toast.makeText(LoginActivity.this, "This username already exists", Toast.LENGTH_SHORT).show();
+                    alertDialog("Error", "This username already exists");
+                    //Toast.makeText(LoginActivity.this, "This username already exists", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 System.out.println("unSUCCESS");
                 System.out.println(t.getMessage());
-                Toast.makeText(LoginActivity.this, "Error. Try again later", Toast.LENGTH_SHORT).show();
+                alertDialog("Error", "Network error. Please< try again later");
+                //Toast.makeText(LoginActivity.this, "Error. Try again later", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
     private void alertDialog(String title, String message){
-        new AlertDialog.Builder(getBaseContext())
+        new AlertDialog.Builder(LoginActivity.this)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+                        ifUserExists();
                     }
                 })
                 .show();
