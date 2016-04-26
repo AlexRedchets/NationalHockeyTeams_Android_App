@@ -24,9 +24,11 @@ public class SplashActivity extends AppCompatActivity {
                 //checking if sharedPreferences file exists
                 if(sharedPreferences.contains("firstname") && (sharedPreferences.contains("lastname"))){
                     Intent i = new Intent(SplashActivity.this, ApplicationActivity.class);
+                    finish();
                     startActivity(i);
                 }else{
                     Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                    finish();
                     startActivity(i);
                 }
             }

@@ -9,10 +9,15 @@
     <string name="signinButton">sign in</string>
     <string name="name">Name:</string>
     <string name="team">Team:</string>
-    <string name="birthplace">Birthplace:</string>
-    <string name="birthdate">Birthdate:</string>
-    <string name="position">Position:</string>
-    <string name="number">Number:</string>
-    <string name="weight">Weight:</string>
-    <string name="height">Height:</string>
+    <string name="birthplace">Birthplace: </string>
+    <string name="birthdate">Birthdate: </string>
+    <string name="position">Position: </string>
+    <string name="number">Number: </string>
+    <string name="weight">Weight: </string>
+    <string name="height">Height: </string>
+    <string name="registration_enter_username">username</string>
+    <string name="registration_enter_password">password</string>
+    <string name="registration_reenter_password">re-enter password</string>
+    <string name="create_account_button">Create Account</string>
+    <string name="registration_cancel_button">Cancel</string>
 </resources>
