@@ -7,12 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PlayersListFragment extends Fragment {
+
+
+    static PlayersListFragment newInstance (){
+        PlayersListFragment playersListFragment = new PlayersListFragment();
+        return playersListFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -49,7 +61,5 @@ public class PlayersListFragment extends Fragment {
                     }
                 });
     }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);}
+
 }

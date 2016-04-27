@@ -1,13 +1,10 @@
 package com.example.azvk.nationalhockeyteams;
 
-
-
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +15,9 @@ import android.view.MenuItem;
 
 public class ApplicationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FragmentPagerAdapter fragmentPagerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,16 @@ public class ApplicationActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
+        fragmentPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(fragmentPagerAdapter);
+
+
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         PlayersListFragment playersListFragment = new PlayersListFragment();
         fragmentTransaction.add(R.id.fragment_container, playersListFragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
     }
 
     @Override
@@ -81,7 +86,7 @@ public class ApplicationActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_teams) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
