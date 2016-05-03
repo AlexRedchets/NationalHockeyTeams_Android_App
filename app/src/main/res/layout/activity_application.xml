@@ -11,21 +11,38 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <android.support.v4.view.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/viewPager"
-        android:layout_marginTop="64dp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/pager_header"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/header"
+            android:layout_marginTop="64dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/hockey_background"/>
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"/>
-    </android.support.v4.view.ViewPager>>
+            android:layout_gravity="bottom"
+            android:layout_below="@+id/header"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <android.support.v4.view.PagerTabStrip
+                android:id="@+id/pager_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"/>
+        </android.support.v4.view.ViewPager>
+
     </RelativeLayout>
     <!--toolbar-->
     <include

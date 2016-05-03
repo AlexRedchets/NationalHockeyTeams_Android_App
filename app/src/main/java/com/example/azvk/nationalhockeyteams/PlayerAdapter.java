@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.azvk.nationalhockeyteams.Player;
-import com.example.azvk.nationalhockeyteams.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

@@ -70,6 +70,11 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.body().username != null) {
                         System.out.println("SUCCESS");
+                        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("username", usernameText.getText().toString());
+                        editor.putString("password", passwordText.getText().toString());
+                        editor.apply();
                         ifUserExists();
                     } else {
                         System.out.println("unSUCCESS");
@@ -85,8 +90,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void ifUserExists(){
-        dialog.dismiss();
-        Intent i = new Intent(this, ApplicationActivity.class);
+        if (dialog!= null){
+            dialog.dismiss();}
+        Intent i = new Intent(this, TeamActivityTest.class);
         finish();
         startActivity(i);
     }
