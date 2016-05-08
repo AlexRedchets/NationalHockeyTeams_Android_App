@@ -3,55 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff">
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
-        android:id="@+id/name"
-        android:layout_marginTop="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/team"
-        android:id="@+id/team"
-        android:layout_below="@+id/name" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/birthplace"
-        android:id="@+id/birthplace"
-        android:layout_below="@+id/team"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/birthdate"
-        android:id="@+id/birthdate"
-        android:layout_below="@+id/birthplace"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/position"
-        android:id="@+id/position"
-        android:layout_below="@+id/birthdate"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/number"
-        android:id="@+id/number"
-        android:layout_below="@+id/position"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weight"
-        android:id="@+id/weight"
-        android:layout_below="@+id/number"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/height"
-        android:id="@+id/height"
-        android:layout_below="@+id/weight"/>
-        -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,57 +10,6 @@
         android:textSize="15dp"
         android:layout_marginLeft="35dp"
         android:id="@+id/playerName"/>
-    <!--
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/team"
-        android:layout_toRightOf="@+id/team"
-        android:layout_toEndOf="@+id/team"
-        android:id="@+id/playerTeam"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/birthplace"
-        android:layout_toRightOf="@+id/birthplace"
-        android:layout_toEndOf="@+id/birthplace"
-        android:id="@+id/playerBirthplace"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/birthdate"
-        android:layout_toRightOf="@+id/birthdate"
-        android:layout_toEndOf="@+id/birthdate"
-        android:id="@+id/playerBirthdate"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/position"
-        android:layout_toRightOf="@+id/position"
-        android:layout_toEndOf="@+id/position"
-        android:id="@+id/playerPosition"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/number"
-        android:layout_toRightOf="@+id/number"
-        android:layout_toEndOf="@+id/number"
-        android:id="@+id/playerNumber"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/height"
-        android:layout_toRightOf="@+id/height"
-        android:layout_toEndOf="@+id/height"
-        android:id="@+id/playerHeight"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/weight"
-        android:layout_toRightOf="@+id/weight"
-        android:layout_toEndOf="@+id/weight"
-        android:id="@+id/playerWeight"/>
-        -->
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="50dp"

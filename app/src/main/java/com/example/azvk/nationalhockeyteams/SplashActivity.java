@@ -7,12 +7,12 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
-import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //running time of splash activity
         int splash_time_out = 3000;
 
         super.onCreate(savedInstanceState);
@@ -26,12 +26,13 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //checking if sharedPreferences file exists
                 if(sharedPreferences.contains("username") && (sharedPreferences.contains("password"))){
+                    //checking if sharedPreferences contains favorite_team informatiob
                     if(sharedPreferences.contains("team")){
                         Intent i = new Intent(SplashActivity.this, ApplicationActivity.class);
                         finish();
                         startActivity(i);}
                     else {
-                        Intent i = new Intent(SplashActivity.this, TeamActivityTest.class);
+                        Intent i = new Intent(SplashActivity.this, TeamActivity.class);
                         finish();
                         startActivity(i);
                     }

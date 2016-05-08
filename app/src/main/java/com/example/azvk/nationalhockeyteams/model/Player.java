@@ -1,4 +1,4 @@
-package com.example.azvk.nationalhockeyteams;
+package com.example.azvk.nationalhockeyteams.model;
 
 public class Player {
 

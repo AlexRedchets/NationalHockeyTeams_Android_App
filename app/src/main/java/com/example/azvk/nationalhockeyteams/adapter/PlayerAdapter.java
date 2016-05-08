@@ -1,4 +1,4 @@
-package com.example.azvk.nationalhockeyteams;
+package com.example.azvk.nationalhockeyteams.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.azvk.nationalhockeyteams.R;
+import com.example.azvk.nationalhockeyteams.model.Player;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

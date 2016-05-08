@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.azvk.nationalhockeyteams.client.LoginService;
+import com.example.azvk.nationalhockeyteams.model.User;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -70,12 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.body().username != null) {
                         System.out.println("SUCCESS");
-                        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("username", usernameText.getText().toString());
-                        editor.putString("password", passwordText.getText().toString());
-                        editor.apply();
-                        ifUserExists();
+                        saveUserAlertDialog("", "Do you want to save your information to login automatically?", response.body().username, response.body().password);
                     } else {
                         System.out.println("unSUCCESS");
                         Toast.makeText(LoginActivity.this, "Incorrect username/password information", Toast.LENGTH_LONG).show();
@@ -92,9 +90,18 @@ public class LoginActivity extends AppCompatActivity {
     private void ifUserExists(){
         if (dialog!= null){
             dialog.dismiss();}
-        Intent i = new Intent(this, TeamActivityTest.class);
-        finish();
-        startActivity(i);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        if(sharedPreferences.contains("team")){
+            Intent i = new Intent(LoginActivity.this, ApplicationActivity.class);
+            finish();
+            startActivity(i);}
+        else {
+            Intent i = new Intent(LoginActivity.this, TeamActivity.class);
+            finish();
+            startActivity(i);
+        }
     }
 
     private void signInDialog(){

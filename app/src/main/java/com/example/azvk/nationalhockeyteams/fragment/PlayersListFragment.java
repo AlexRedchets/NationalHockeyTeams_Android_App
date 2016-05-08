@@ -1,12 +1,21 @@
-package com.example.azvk.nationalhockeyteams;
+package com.example.azvk.nationalhockeyteams.fragment;
 
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.azvk.nationalhockeyteams.Generator;
+import com.example.azvk.nationalhockeyteams.adapter.PlayerAdapter;
+import com.example.azvk.nationalhockeyteams.R;
+import com.example.azvk.nationalhockeyteams.client.PlayerClient;
+import com.example.azvk.nationalhockeyteams.model.Player;
 
 import java.util.List;
 import retrofit2.Call;
@@ -15,14 +24,17 @@ import retrofit2.Response;
 
 public class PlayersListFragment extends Fragment {
 
+    Dialog dialog;
 
-    static PlayersListFragment newInstance (){
+
+    public static PlayersListFragment newInstance (){
         PlayersListFragment playersListFragment = new PlayersListFragment();
         return playersListFragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        dialog = null;
         super.onCreate(savedInstanceState);
     }
 
@@ -38,11 +50,20 @@ public class PlayersListFragment extends Fragment {
 
         final PlayerAdapter mPlayerAdapter = new PlayerAdapter(getActivity());
 
-        ListView mListView = (ListView)getActivity().findViewById(R.id.playersList);
+        final ListView mListView = (ListView)getActivity().findViewById(R.id.playersList);
         if (mListView != null) {
             mListView.setAdapter(mPlayerAdapter);
         }
 
+        assert mListView != null;
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(), "You pressed " + mPlayerAdapter.getItem(position).getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ////get players information from server
         PlayerClient client = Generator.createService(PlayerClient.class);
         final Call<List<Player>> call = client.player();
             call.enqueue(new Callback<List<Player>>() {
@@ -50,9 +71,9 @@ public class PlayersListFragment extends Fragment {
                     public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
                         if (response.isSuccessful()) {
                             mPlayerAdapter.updateAdapter(response.body());
-                            System.out.println("SUCCESS");
+                            System.out.println("Getting players info: SUCCESS");
                         } else {
-                            System.out.println("ERROR");
+                            System.out.println("Getting players info: ERROR");
                         }
                     }
                     @Override

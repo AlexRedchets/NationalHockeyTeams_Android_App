@@ -11,12 +11,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.azvk.nationalhockeyteams.adapter.ViewPagerAdapter;
+import com.example.azvk.nationalhockeyteams.model.Team;
+import com.squareup.picasso.Picasso;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 
 public class ApplicationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FragmentPagerAdapter fragmentPagerAdapter;
+
+    private Realm realm;
+    private RealmConfiguration realmConfig;
+    ImageView header_pic;
 
 
     @Override
@@ -43,12 +56,17 @@ public class ApplicationActivity extends AppCompatActivity
         fragmentPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentPagerAdapter);
 
+        //upload background image from realm and set it using Picasso
+        header_pic = (ImageView)findViewById(R.id.header_pic);
+        realmConfig = new RealmConfiguration.Builder(getApplicationContext()).build();
+        realm = Realm.getInstance(realmConfig);
+        Team fav_team = realm.where(Team.class).findFirst();
 
-        /*FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        PlayersListFragment playersListFragment = new PlayersListFragment();
-        fragmentTransaction.add(R.id.fragment_container, playersListFragment);
-        fragmentTransaction.commit();*/
+        Picasso.with(getApplicationContext())
+                .load(fav_team.getImgResHeader())
+                .resize(400, 150)
+                .centerCrop()
+                .into(header_pic);
     }
 
     @Override
@@ -90,7 +108,7 @@ public class ApplicationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_teams) {
-            // Handle the camera action
+            Toast.makeText(ApplicationActivity.this, "You pressed " + id, Toast.LENGTH_SHORT).show();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
