@@ -11,8 +11,9 @@ public class Player {
     int weight;
     int height;
     String imageUrl;
+    String national_team;
 
-    public Player(String name, String team, String position, String birthdate, String birthplace, int number, int weight, int height) {
+    public Player(String national_team, String name, String team, String position, String birthdate, String birthplace, int number, int weight, int height) {
         this.name = name;
         this.team = team;
         this.position = position;
@@ -21,6 +22,11 @@ public class Player {
         this.number = number;
         this.weight = weight;
         this.height = height;
+        this.national_team = national_team;
+    }
+
+    public Player(String national_team) {
+        this.national_team = national_team;
     }
 
     public Player(){}
@@ -28,6 +34,10 @@ public class Player {
     public String getImgRes() {
 
         return imageUrl;
+    }
+
+    public String getNational_team() {
+        return national_team;
     }
 
     public String getName() {
@@ -96,5 +106,9 @@ public class Player {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public void setNational_team(String national_team) {
+        this.national_team = national_team;
     }
 }

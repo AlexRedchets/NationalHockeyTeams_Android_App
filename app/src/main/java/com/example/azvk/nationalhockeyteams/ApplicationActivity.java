@@ -1,5 +1,6 @@
 package com.example.azvk.nationalhockeyteams;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -58,7 +59,7 @@ public class ApplicationActivity extends AppCompatActivity
 
         //upload background image from realm and set it using Picasso
         header_pic = (ImageView)findViewById(R.id.header_pic);
-        realmConfig = new RealmConfiguration.Builder(getApplicationContext()).build();
+        realmConfig = new RealmConfiguration.Builder(getApplicationContext()).deleteRealmIfMigrationNeeded().build();
         realm = Realm.getInstance(realmConfig);
         Team fav_team = realm.where(Team.class).findFirst();
 
@@ -108,7 +109,9 @@ public class ApplicationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_teams) {
-            Toast.makeText(ApplicationActivity.this, "You pressed " + id, Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(ApplicationActivity.this, TeamActivity.class);
+            finish();
+            startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

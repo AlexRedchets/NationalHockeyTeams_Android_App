@@ -91,17 +91,9 @@ public class LoginActivity extends AppCompatActivity {
         if (dialog!= null){
             dialog.dismiss();}
 
-        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
-        if(sharedPreferences.contains("team")){
-            Intent i = new Intent(LoginActivity.this, ApplicationActivity.class);
-            finish();
-            startActivity(i);}
-        else {
-            Intent i = new Intent(LoginActivity.this, TeamActivity.class);
-            finish();
-            startActivity(i);
-        }
+        Intent i = new Intent(LoginActivity.this, TeamActivity.class);
+        finish();
+        startActivity(i);
     }
 
     private void signInDialog(){
@@ -211,7 +203,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveLoginInfo(String username, String password){
-        dialog.cancel();
+
+        if (dialog!= null) {
+        dialog.cancel();}
 
         SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

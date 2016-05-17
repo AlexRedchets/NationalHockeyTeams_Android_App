@@ -25,18 +25,11 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //checking if sharedPreferences file exists
-                if(sharedPreferences.contains("username") && (sharedPreferences.contains("password"))){
-                    //checking if sharedPreferences contains favorite_team informatiob
-                    if(sharedPreferences.contains("team")){
-                        Intent i = new Intent(SplashActivity.this, ApplicationActivity.class);
-                        finish();
-                        startActivity(i);}
-                    else {
-                        Intent i = new Intent(SplashActivity.this, TeamActivity.class);
-                        finish();
-                        startActivity(i);
-                    }
-                }else{
+                if (sharedPreferences.contains("username") && (sharedPreferences.contains("password"))) {
+                    Intent i = new Intent(SplashActivity.this, TeamActivity.class);
+                    finish();
+                    startActivity(i);
+                } else {
                     Intent i = new Intent(SplashActivity.this, LoginActivity.class);
                     finish();
                     startActivity(i);
