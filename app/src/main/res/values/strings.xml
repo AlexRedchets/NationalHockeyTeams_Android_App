@@ -23,4 +23,7 @@
     <string name="header_coach">Head coach: </string>
     <string name="header_captain">Captain: </string>
     <string name="header_url">url: </string>
+    <string name="enter_name">Enter name</string>
+    <string name="search_button">Search</string>
+    <string name="cancel_button">Cancel</string>
 </resources>

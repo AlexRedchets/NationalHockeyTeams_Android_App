@@ -25,9 +25,11 @@ public class Player {
         this.national_team = national_team;
     }
 
-    public Player(String national_team) {
-        this.national_team = national_team;
+    public Player(String name) {
+        this.name = name;
     }
+
+
 
     public Player(){}
 

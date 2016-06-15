@@ -1,6 +1,10 @@
 package com.example.azvk.nationalhockeyteams;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -112,6 +116,32 @@ public class ApplicationActivity extends AppCompatActivity
             Intent i = new Intent(ApplicationActivity.this, TeamActivity.class);
             finish();
             startActivity(i);
+        }
+        else if (id == R.id.nav_search){
+            Intent i = new Intent(ApplicationActivity.this, SearchActivity.class);
+            finish();
+            startActivity(i);
+        }
+        else{
+            new AlertDialog.Builder(ApplicationActivity.this)
+                    .setMessage("Do you want to log out?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+                            sharedPreferences.edit().clear().apply();
+                            dialog.cancel();
+                            Intent i = new Intent(ApplicationActivity.this, LoginActivity.class);
+                            finish();
+                            startActivity(i);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
