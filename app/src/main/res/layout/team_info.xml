@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/russian_flag_small"
+        android:id="@+id/infoFlag"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infoFlag"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:id="@+id/infoName"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/headCoachInput"
+        android:layout_alignBaseline="@+id/headCoach"
+        android:layout_alignBottom="@+id/headCoach"
+        android:layout_toRightOf="@+id/headCoach"
+        android:layout_toEndOf="@+id/headCoach"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/captainInput"
+        android:layout_alignBaseline="@+id/captain"
+        android:layout_alignBottom="@+id/captain"
+        android:layout_toRightOf="@+id/captain"
+        android:layout_toEndOf="@+id/captain"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_coach"
+        android:id="@+id/headCoach"
+        android:layout_below="@+id/infoName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:textSize="17sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_captain"
+        android:id="@+id/captain"
+        android:textSize="17sp"
+        android:layout_below="@+id/headCoach"
+        android:layout_alignLeft="@+id/headCoach"
+        android:layout_alignStart="@+id/headCoach"
+        android:layout_marginTop="12dp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>

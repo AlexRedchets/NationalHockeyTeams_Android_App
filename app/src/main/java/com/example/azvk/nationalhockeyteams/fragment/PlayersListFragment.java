@@ -30,13 +30,12 @@ import retrofit2.Response;
 
 public class PlayersListFragment extends Fragment {
 
-    DialogFragment dialog;
+    private DialogFragment dialog;
     private Realm realm;
     private RealmConfiguration realmConfig;
 
     public static PlayersListFragment newInstance (){
-        PlayersListFragment playersListFragment = new PlayersListFragment();
-        return playersListFragment;
+        return new PlayersListFragment();
     }
 
     @Override
@@ -66,61 +65,27 @@ public class PlayersListFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "You chose: " + mPlayerAdapter.getItem(position).getName(), Toast.LENGTH_SHORT).show();
+                //send players info to the dialogFragment using Bundle
+                Bundle args = new Bundle();
+                args.putString("name", mPlayerAdapter.getItem(position).getName());
+                args.putString("birthdate", mPlayerAdapter.getItem(position).getBirthdate());
+                args.putString("birthplace", mPlayerAdapter.getItem(position).getBirthplace());
+                args.putString("team", mPlayerAdapter.getItem(position).getTeam());
+                args.putString("position", mPlayerAdapter.getItem(position).getPosition());
+                args.putInt("number", mPlayerAdapter.getItem(position).getNumber());
+                args.putInt("weight", mPlayerAdapter.getItem(position).getWeight());
+                args.putInt("height", mPlayerAdapter.getItem(position).getHeight());
+                args.putString("imgUrl", mPlayerAdapter.getItem(position).getImgRes());
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 PlayerInfoDialog playerInfoDialog = new PlayerInfoDialog();
+                playerInfoDialog.setArguments(args);
                 playerInfoDialog.show(fm, "Dialog");
-
-                /*TextView playerName = (TextView)view.findViewById(R.id.playerNameDialogInput);
-                TextView playerPosition = (TextView)view.findViewById(R.id.playerPositionDialogInput);
-                TextView playerBirthdate = (TextView)view.findViewById(R.id.playerBirthdateDialogInput);
-                TextView playerBirthplace = (TextView)view.findViewById(R.id.playerBirthplaceDialogInput);
-                TextView playerNumber = (TextView)view.findViewById(R.id.playerNumberDialogInput);
-                TextView playerHeight = (TextView)view.findViewById(R.id.playerHeightDialogInput);
-                TextView playerWeight = (TextView)view.findViewById(R.id.playerWeightDialogInput);
-                TextView playerTeam = (TextView)view.findViewById(R.id.playerTeamtDialogInput);
-                ImageView playerImage = (ImageView)view.findViewById(R.id.playerImageDialog);
-
-                playerName.setText(mPlayerAdapter.getItem(position).getName());
-                playerPosition.setText(mPlayerAdapter.getItem(position).getPosition());
-                playerBirthdate.setText(mPlayerAdapter.getItem(position).getBirthdate());
-                playerBirthplace.setText(mPlayerAdapter.getItem(position).getBirthplace());
-                playerNumber.setText("" + mPlayerAdapter.getItem(position).getNumber());
-                playerHeight.setText("" + mPlayerAdapter.getItem(position).getHeight());
-                playerWeight.setText("" + mPlayerAdapter.getItem(position).getWeight());
-                playerTeam.setText(mPlayerAdapter.getItem(position).getTeam());
-                Picasso.with(getContext()).load(mPlayerAdapter.getItem(position).getImgRes()).into(playerImage);*/
-
-
-
-
-                /*dialog = new Dialog(getContext());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                dialog.setContentView(R.layout.player_info);
-                layoutParams.copyFrom(dialog.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-                layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
-                layoutParams.gravity = Gravity.CENTER;
-
-                dialog.getWindow().setAttributes(layoutParams);
-
-
-                playerName.setText(mPlayerAdapter.getItem(position).getName());
-                playerPosition.setText(mPlayerAdapter.getItem(position).getPosition());
-                playerBirthdate.setText(mPlayerAdapter.getItem(position).getBirthdate());
-                playerBirthplace.setText(mPlayerAdapter.getItem(position).getBirthplace());
-                playerNumber.setText("" + mPlayerAdapter.getItem(position).getNumber());
-                playerHeight.setText("" + mPlayerAdapter.getItem(position).getHeight());
-                playerWeight.setText("" + mPlayerAdapter.getItem(position).getWeight());
-                playerTeam.setText(mPlayerAdapter.getItem(position).getTeam());
-                Picasso.with(getContext()).load(mPlayerAdapter.getItem(position).getImgRes()).into(playerImage);*/
 
             }
         });
 
-        ////get players information from server
+        //get players information from server
         PlayerClient client = Generator.createService(PlayerClient.class);
 
         realmConfig = new RealmConfiguration.Builder(getContext()).deleteRealmIfMigrationNeeded().build();
@@ -144,5 +109,4 @@ public class PlayersListFragment extends Fragment {
                     }
                 });
     }
-
 }
