@@ -30,11 +30,11 @@ import io.realm.RealmConfiguration;
 public class ApplicationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    FragmentPagerAdapter fragmentPagerAdapter;
+    private FragmentPagerAdapter fragmentPagerAdapter;
 
     private Realm realm;
     private RealmConfiguration realmConfig;
-    ImageView header_pic;
+    private ImageView header_pic;
 
 
     @Override
@@ -122,7 +122,13 @@ public class ApplicationActivity extends AppCompatActivity
             finish();
             startActivity(i);
         }
-        else{
+        else if (id == R.id.nav_app){
+
+        }
+        else if (id == R.id.nav_credits){
+
+        }
+        else if (id == R.id.nav_logout){
             new AlertDialog.Builder(ApplicationActivity.this)
                     .setMessage("Do you want to log out?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

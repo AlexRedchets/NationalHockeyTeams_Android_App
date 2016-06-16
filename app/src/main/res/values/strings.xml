@@ -26,4 +26,11 @@
     <string name="enter_name">Enter name</string>
     <string name="search_button">Search</string>
     <string name="cancel_button">Cancel</string>
+    <string name="nav_teams">Teams</string>
+    <string name="nav_search">Search player</string>
+    <string name="nav_app_info">About app</string>
+    <string name="nav_credits">Credits</string>
+    <string name="nav_logout">Log out</string>
+    <string name="nav_app">App</string>
+    <string name="nav_login_info">Login info</string>
 </resources>
