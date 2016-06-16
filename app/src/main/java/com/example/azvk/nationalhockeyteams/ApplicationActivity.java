@@ -50,15 +50,18 @@ public class ApplicationActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        assert drawer != null;
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
         //Activate viewPager
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
         fragmentPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        assert viewPager != null;
         viewPager.setAdapter(fragmentPagerAdapter);
 
         //upload background image from realm and set it using Picasso
@@ -77,6 +80,7 @@ public class ApplicationActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        assert drawer != null;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -126,7 +130,9 @@ public class ApplicationActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_credits){
-
+            Intent i = new Intent(ApplicationActivity.this, CreditsActivity.class);
+            finish();
+            startActivity(i);
         }
         else if (id == R.id.nav_logout){
             new AlertDialog.Builder(ApplicationActivity.this)
@@ -150,6 +156,7 @@ public class ApplicationActivity extends AppCompatActivity
                     .show();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        assert drawer != null;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

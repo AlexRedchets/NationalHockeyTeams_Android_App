@@ -33,4 +33,11 @@
     <string name="nav_logout">Log out</string>
     <string name="nav_app">App</string>
     <string name="nav_login_info">Login info</string>
+    <string name="credits_title">Credits</string>
+    <string name="credits_first">Players and teams information (statistics, photo, some biography) - nhl.com and en.khl.ru</string>
+    <string name="credits_second">Players and teams information (staistics, physique, team\'s rosters) - wikipedia.org</string>
+    <string name="credits_third">App logo - nationalteamsoficehockey.com</string>
+    <string name="credits_fourth">Flags - flaglane.com</string>
+    <string name="credits_button">Back</string>
+
 </resources>
