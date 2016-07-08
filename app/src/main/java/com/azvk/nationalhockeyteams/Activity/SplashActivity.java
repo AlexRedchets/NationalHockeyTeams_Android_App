@@ -1,4 +1,4 @@
-package com.example.azvk.nationalhockeyteams;
+package com.azvk.nationalhockeyteams.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
+
+import com.azvk.nationalhockeyteams.R;
 
 public class SplashActivity extends AppCompatActivity {
 

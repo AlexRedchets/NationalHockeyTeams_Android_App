@@ -1,4 +1,4 @@
-package com.example.azvk.nationalhockeyteams;
+package com.azvk.nationalhockeyteams.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,8 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.azvk.nationalhockeyteams.client.LoginService;
-import com.example.azvk.nationalhockeyteams.model.User;
+import com.azvk.nationalhockeyteams.Generator;
+import com.azvk.nationalhockeyteams.R;
+import com.azvk.nationalhockeyteams.client.LoginService;
+import com.azvk.nationalhockeyteams.model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,16 +27,15 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText usernameText;
-    EditText passwordText;
-    Button loginButton;
-    Button signinButton;
-    Dialog dialog;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Button loginButton;
+        Button signinButton;
 
         dialog = null;
 
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        if (signinButton == null) throw new AssertionError();
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginButtonClicked(){
+        EditText usernameText;
+        EditText passwordText;
         usernameText = (EditText)findViewById(R.id.loginUsername);
         passwordText = (EditText)findViewById(R.id.loginPassword);
 
@@ -65,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Enter username/password", Toast.LENGTH_LONG).show();
         }
         else {
+            assert usernameText != null;
+            assert passwordText != null;
             final User user = new User(usernameText.getText().toString(), passwordText.getText().toString());
             LoginService loginService = Generator.createService(LoginService.class);
             Call<User> call = loginService.userLogin(user);
@@ -153,11 +159,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.body().username != null) {
                     System.out.println("SUCCESS");
                     saveUserAlertDialog("Success", "Account was created successfully. Do you want to save your information to login automatically?", username, password);
-                    //Toast.makeText(LoginActivity.this, "Account was created successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     System.out.println("unSUCCESS");
                     alertDialog("Error", "This username already exists");
-                    //Toast.makeText(LoginActivity.this, "This username already exists", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -165,7 +169,6 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("unSUCCESS");
                 System.out.println(t.getMessage());
                 alertDialog("Error", "Network error. Please< try again later");
-                //Toast.makeText(LoginActivity.this, "Error. Try again later", Toast.LENGTH_SHORT).show();
             }
         });
 

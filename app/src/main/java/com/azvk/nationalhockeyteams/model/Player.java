@@ -1,17 +1,17 @@
-package com.example.azvk.nationalhockeyteams.model;
+package com.azvk.nationalhockeyteams.model;
 
 public class Player {
 
-    String name;
-    String team;
-    String position;
-    String birthdate;
-    String birthplace;
-    int number;
-    int weight;
-    int height;
-    String imageUrl;
-    String national_team;
+    private String name;
+    private String team;
+    private String position;
+    private String birthdate;
+    private String birthplace;
+    private int number;
+    private int weight;
+    private int height;
+    private String imageUrl;
+    private String national_team;
 
     public Player(String national_team, String name, String team, String position, String birthdate, String birthplace, int number, int weight, int height) {
         this.name = name;
@@ -28,8 +28,6 @@ public class Player {
     public Player(String name) {
         this.name = name;
     }
-
-
 
     public Player(){}
 
@@ -90,7 +88,7 @@ public class Player {
         this.height = height;
     }
 
-    public void setPosition(String position) {
+   public void setPosition(String position) {
         this.position = position;
     }
 

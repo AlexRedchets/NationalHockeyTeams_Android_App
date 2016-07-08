@@ -1,4 +1,4 @@
-package com.example.azvk.nationalhockeyteams;
+package com.azvk.nationalhockeyteams.Activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,10 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.azvk.nationalhockeyteams.adapter.ViewPagerAdapter;
-import com.example.azvk.nationalhockeyteams.model.Team;
+import com.azvk.nationalhockeyteams.R;
+import com.azvk.nationalhockeyteams.adapter.ViewPagerAdapter;
+import com.azvk.nationalhockeyteams.model.Team;
 import com.squareup.picasso.Picasso;
 
 import io.realm.Realm;
@@ -30,17 +30,15 @@ import io.realm.RealmConfiguration;
 public class ApplicationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private FragmentPagerAdapter fragmentPagerAdapter;
-
-    private Realm realm;
-    private RealmConfiguration realmConfig;
-    private ImageView header_pic;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application);
+
+        FragmentPagerAdapter fragmentPagerAdapter;
+        Realm realm;
+        RealmConfiguration realmConfig;
+        ImageView header_pic;
 
         //Insert toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -127,7 +125,9 @@ public class ApplicationActivity extends AppCompatActivity
             startActivity(i);
         }
         else if (id == R.id.nav_app){
-
+            Intent i = new Intent(ApplicationActivity.this, AboutAppActivity.class);
+            finish();
+            startActivity(i);
         }
         else if (id == R.id.nav_credits){
             Intent i = new Intent(ApplicationActivity.this, CreditsActivity.class);

@@ -1,6 +1,5 @@
-package com.example.azvk.nationalhockeyteams.fragment;
+package com.azvk.nationalhockeyteams.fragment;
 
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,15 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.azvk.nationalhockeyteams.ApplicationActivity;
-import com.example.azvk.nationalhockeyteams.Generator;
-import com.example.azvk.nationalhockeyteams.adapter.PlayerAdapter;
-import com.example.azvk.nationalhockeyteams.R;
-import com.example.azvk.nationalhockeyteams.client.PlayerClient;
-import com.example.azvk.nationalhockeyteams.model.Player;
-import com.example.azvk.nationalhockeyteams.model.Team;
+import com.azvk.nationalhockeyteams.Generator;
+import com.azvk.nationalhockeyteams.adapter.PlayerAdapter;
+import com.azvk.nationalhockeyteams.R;
+import com.azvk.nationalhockeyteams.client.PlayerClient;
+import com.azvk.nationalhockeyteams.model.Player;
+import com.azvk.nationalhockeyteams.model.Team;
 
 import java.util.List;
 
@@ -30,17 +27,12 @@ import retrofit2.Response;
 
 public class PlayersListFragment extends Fragment {
 
-    private DialogFragment dialog;
-    private Realm realm;
-    private RealmConfiguration realmConfig;
-
     public static PlayersListFragment newInstance (){
         return new PlayersListFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        dialog = null;
         super.onCreate(savedInstanceState);
     }
 
@@ -53,6 +45,9 @@ public class PlayersListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Realm realm;
+        RealmConfiguration realmConfig;
 
         final PlayerAdapter mPlayerAdapter = new PlayerAdapter(getActivity());
 
@@ -85,12 +80,12 @@ public class PlayersListFragment extends Fragment {
             }
         });
 
-        //get players information from server
-        PlayerClient client = Generator.createService(PlayerClient.class);
-
         realmConfig = new RealmConfiguration.Builder(getContext()).deleteRealmIfMigrationNeeded().build();
         realm = Realm.getInstance(realmConfig);
         Team fav_team = realm.where(Team.class).findFirst();
+
+        //get players information from server
+        PlayerClient client = Generator.createService(PlayerClient.class);
 
         final Call<List<Player>> call = client.player(fav_team.getName());
             call.enqueue(new Callback<List<Player>>() {

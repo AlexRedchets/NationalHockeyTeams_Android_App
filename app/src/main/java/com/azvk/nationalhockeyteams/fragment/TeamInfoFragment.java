@@ -1,4 +1,4 @@
-package com.example.azvk.nationalhockeyteams.fragment;
+package com.azvk.nationalhockeyteams.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,22 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.azvk.nationalhockeyteams.R;
-import com.example.azvk.nationalhockeyteams.model.Team;
+import com.azvk.nationalhockeyteams.R;
+import com.azvk.nationalhockeyteams.model.Team;
 import com.squareup.picasso.Picasso;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.internal.Context;
 
 public class TeamInfoFragment extends Fragment {
-
-    private Realm realm;
-    private RealmConfiguration realmConfig;
 
     public static TeamInfoFragment newInstance(){
         return new TeamInfoFragment();
@@ -41,6 +36,9 @@ public class TeamInfoFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Realm realm;
+        RealmConfiguration realmConfig;
 
         ImageView flag;
         TextView teamName;
