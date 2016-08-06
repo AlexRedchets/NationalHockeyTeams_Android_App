@@ -36,14 +36,15 @@ public class PlayerAdapter extends BaseAdapter {
         return playerList != null ? playerList.size() : 0;
     }
 
-    @Override
-    public Player getItem(int position) {
-        return playerList != null ? playerList.get(position) : null;
-    }
 
     @Override
     public long getItemId(int position) {
         return playerList != null ? playerList.get(position).hashCode() : 0;
+    }
+
+    @Override
+    public Player getItem(int position) {
+        return playerList != null ? playerList.get(position) : null;
     }
 
     @Override

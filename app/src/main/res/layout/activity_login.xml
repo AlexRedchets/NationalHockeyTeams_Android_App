@@ -1,52 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical">
+    tools:context="com.azvk.nationalhockeyteams.Activity.LoginActivity">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/loginImage"
-        android:src="@drawable/app_logo"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_username_hint"
-        android:id="@+id/loginUsername"
-        android:textStyle="italic"
-        android:layout_below="@+id/loginImage"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_password_hint"
-        android:id="@+id/loginPassword"
-        android:textStyle="italic"
-        android:layout_below="@+id/loginUsername"
-        android:inputType="textPassword"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="@string/loginButton"
-        android:id="@+id/loginButton"
-        android:layout_below="@+id/loginPassword"
-        android:layout_centerHorizontal="true"
-        android:onClick="loginButtonClicked"/>
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/signinButton"
-        android:id="@+id/signinButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp" />
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

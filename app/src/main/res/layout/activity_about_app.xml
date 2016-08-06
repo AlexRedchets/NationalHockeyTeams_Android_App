@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_about_app"
@@ -17,114 +17,95 @@
         android:layout_width="152dp"
         android:layout_height="134dp"
         android:id="@+id/imageView3"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        app:layout_constraintTop_toTopOf="@+id/activity_about_app"
-        android:layout_marginTop="24dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_about_app" />
-
-    <TextView
-        android:text="This app was created as a demonstration of my knowledge and skills. In the app I used following techniques and services:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        android:layout_marginTop="16dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_about_app"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintHorizontal_bias="0.0" />
-
-    <TextView
-        android:text=" - Amazon Web Services"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:text=" - Node JS Express"
-        android:layout_width="56dp"
-        android:layout_height="16dp"
-        android:id="@+id/textView8"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:text=" - Mongo DB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView9"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:text=" - JSON parsing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView10"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:text=" - Retrofit 2.0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginTop="8dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_about_app"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp" />
-
-    <TextView
-        android:text=" - Realm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        android:layout_marginTop="8dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_about_app"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp" />
-
-    <TextView
-        android:text=" - Picasso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        android:layout_marginTop="8dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_about_app"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="@string/credits_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/aboutAppButton"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_about_app"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_about_app"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_about_app"
-        android:layout_marginBottom="16dp" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginBottom="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="This app was created as a demonstration of my knowledge and skills. In the app I used following techniques and services:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp" />
+
+    <TextView
+        android:text=" - Amazon Web Services"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text=" - Retrofit 2.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:text=" - Picasso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:text=" - JSON parsing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:text=" - Mongo DB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
+
+    <TextView
+        android:text=" - Realm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:layout_alignBaseline="@+id/textView11"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_alignRight="@+id/textView9"
+        android:layout_alignEnd="@+id/textView9" />
+
+    <TextView
+        android:text=" - Node JS Express"
+        android:layout_width="56dp"
+        android:layout_height="16dp"
+        android:id="@+id/textView8"
+        android:layout_alignBottom="@+id/textView13"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

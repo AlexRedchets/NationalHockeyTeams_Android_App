@@ -9,26 +9,32 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/MyMaterialTheme">
+        <activity
+            android:name=".Activity.SplashActivity"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:parentActivityName=".Activity.SplashActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.SplashActivity" />
+        </activity>
+        <!--
         <activity
             android:name=".Activity.ApplicationActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activity.SplashActivity"
-            android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.TeamActivity" />
         <activity android:name=".Activity.SearchActivity" />
         <activity android:name=".Activity.CreditsActivity" />
         <activity android:name=".Activity.AboutAppActivity"/>
+        -->
     </application>
 
 </manifest>
